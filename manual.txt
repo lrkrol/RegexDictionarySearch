@@ -1,0 +1,33 @@
+
+.       any character, excluding newline
+
+[...]   any of the characters contained within [ ]
+
+*       0 or more of the preceding
+?       0 or 1 of the preceding
++       1 or more of the preceding
+{x}     exactly x of the preceding
+{x,y}   between x and y of the preceding
+
+
+\d \D   decimal, non-decimal character [0-9]
+\s \S   whitespace, non-whitespace character [\t\n\r\f\v]
+\w \W   alphanumeric, non-alphanumeric character [a-zA-Z0-9_]
+\b \B   word boundary, not word boundary
+
+(...)   pattern group
+\1      refers back to the contents of group 1
+
+anchors:
+\A \Z   start/end of string
+$       end of a line, i.e. end of the string or any location followed by a newline character
+^       start of a line, i.e. start of the string or any location following a newline character
+
+zero-width assertions: engine does not advance
+(?=...) positive look-ahead: matches ... at this point or the pattern fails
+(?!...) negative look-ahead: matches anything but ... 
+(?<=...) (?<!...)   positive/negative look-behind: matches ... preceding what's after the assertion
+
+tricks:
+anagrams of "duck":
+^(?!.*d.*d)(?!.*u.*u)(?!.*c.*c)(?!.*k.*k)[duck]*$
